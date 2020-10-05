@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 
-function App() {
-  return (<div />);
+function App(): React.ReactElement {
+  return <div />;
 }
 
 export default App;
