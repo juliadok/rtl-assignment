@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert } from 'react-bootstrap';
+import { Alert, Spinner } from 'react-bootstrap';
 import Header from './components/Header';
 import Articles from './components/Articles';
 
@@ -25,7 +25,13 @@ function App(): React.ReactElement {
   }, []);
 
   if (isLoading) {
-    return <Alert variant="primary">Loading...</Alert>;
+    return (
+      <div className="d-flex justify-content-center align-items-center min-vh-100">
+        <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
   }
 
   if (error) {
