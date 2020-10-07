@@ -29,6 +29,9 @@ Remember: There is no right or wrong way to do the test. Main goal is to asses t
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Get Started
+
+If you want to see the result, follow the [link](https://juliadok.github.io/rtl-assignment/).
+
 To run the project locally, please do the following:
 
 ```bash
