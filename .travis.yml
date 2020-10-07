@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - '12'
+
+install:
+  - npm install
+
+script:
+  - npm run lint
+  - npm run test
+  - npm run build
+
+deploy:
+  allow_empty_commit: true
+  cleanup: false
+  committer_from_gh: true
+  commit_message: "Deploy ${TRAVIS_TAG}"
+  edge: true
+  local_dir: build
+  provider: pages:git
+  token: $GITHUB_TOKEN
+  on:
+    tags: true
+    branch: master
