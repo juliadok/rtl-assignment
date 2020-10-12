@@ -5,6 +5,7 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "inlineSourceMap": true,
     "isolatedModules": true,
     "jsx": "react",
     "lib": [
@@ -17,7 +18,6 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "sourceMap": true,
     "strict": true,
     "target": "esnext"
   },
