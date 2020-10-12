@@ -3,8 +3,6 @@ import { Alert, Spinner } from 'react-bootstrap';
 import Header from './components/Header';
 import Articles from './components/Articles';
 
-import './App.css';
-
 function App(): React.ReactElement {
   const [error, setError] = useState<Error>();
   const [isLoading, setLoading] = useState(true);
