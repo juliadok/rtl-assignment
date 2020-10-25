@@ -22,28 +22,21 @@ function App(): React.ReactElement {
     })();
   }, []);
 
-  if (isLoading) {
-    return (
-      <div className="d-flex justify-content-center align-items-center min-vh-100">
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      </div>
-    );
-  }
-
-  if (error) {
-    return <Alert variant="danger">{error.message}</Alert>;
-  }
-
-  if (!articles) {
-    return <Alert variant="danger">No articles</Alert>;
-  }
-
   return (
     <>
       <Header />
-      <Articles articles={articles} />
+
+      {isLoading && (
+        <div className="d-flex justify-content-center align-items-center min-vh-100">
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </div>
+      )}
+
+      {error && <Alert variant="danger">{error.message}</Alert>}
+
+      {articles && <Articles articles={articles} />}
     </>
   );
 }
