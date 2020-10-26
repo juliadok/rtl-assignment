@@ -13,7 +13,7 @@ describe('Articles', () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Articles articles={articles} />);
+    wrapper = shallow(<Articles articles={articles} ratings={[]} />);
   });
 
   it('should render articles title', () => {

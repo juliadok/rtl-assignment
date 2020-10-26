@@ -5,8 +5,8 @@ import Articles from './components/Articles';
 
 function App(): React.ReactElement {
   const [error, setError] = useState<Error>();
-  const [isLoading, setLoading] = useState(true);
   const [articles, setArticles] = useState<Articles>();
+  const [ratings, setRatings] = useState([]);
 
   useEffect((): void => {
     (async (): Promise<void> => {
@@ -16,8 +16,18 @@ function App(): React.ReactElement {
         setArticles(data);
       } catch (e) {
         setError(e);
-      } finally {
-        setLoading(false);
+      }
+    })();
+  }, []);
+
+  useEffect((): void => {
+    (async (): Promise<void> => {
+      try {
+        const response = await fetch('https://scholten.dev/ratings.php');
+        const data = await response.json();
+        setRatings(data);
+      } catch (e) {
+        setError(e);
       }
     })();
   }, []);
@@ -26,7 +36,7 @@ function App(): React.ReactElement {
     <>
       <Header />
 
-      {isLoading && (
+      {(!articles || !ratings) && (
         <div className="d-flex justify-content-center align-items-center min-vh-100">
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
@@ -36,7 +46,7 @@ function App(): React.ReactElement {
 
       {error && <Alert variant="danger">{error.message}</Alert>}
 
-      {articles && <Articles articles={articles} />}
+      {articles && ratings && <Articles articles={articles} ratings={ratings} />}
     </>
   );
 }

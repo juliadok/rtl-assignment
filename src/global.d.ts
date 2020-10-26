@@ -17,3 +17,10 @@ interface Article {
 interface ArticleImage {
   afbeelding: string;
 }
+
+interface Rating {
+  id: number;
+  rating2: number;
+}
+
+type Ratings = Rating[];

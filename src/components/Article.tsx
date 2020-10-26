@@ -5,9 +5,10 @@ import styles from './Article.module.css';
 
 interface ArticleProps {
   article: Article;
+  rating?: number;
 }
 
-const Article = ({ article }: ArticleProps): React.ReactElement => {
+const Article = ({ article, rating }: ArticleProps): React.ReactElement => {
   return (
     <Row as="a" href={article.urlAlias} target="_blank" className="mb-5 text-decoration-none text-reset">
       <Col as="span" xs={12} md={6} lg={4}>
@@ -22,7 +23,8 @@ const Article = ({ article }: ArticleProps): React.ReactElement => {
             {article.titel}
           </Card.Subtitle>
           <Card.Text as="span" className="d-none d-lg-block" data-qa-element="lead">
-            {article.lead}
+            <span className="d-block">{article.lead}</span>
+            {rating ? <span className="d-block font-weight-bold">Rating: {rating}</span> : null}
           </Card.Text>
         </Card>
       </Col>
